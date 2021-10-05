@@ -66,7 +66,7 @@ int Algorithms::getPositionWinding(QPoint &q, std::vector<QPoint> &pol)
     for (int i=0; i<=n; i++)
     {
         // Angle between two line segments
-        double omega = get2LinesAngle(pol[i], q, pol[(i+1)%n], q);
+        double omega = get2LinesAngle(pol[i], q, q, pol[(i+1)%n]);
 
         // Point and line segment position
         int pos = getPointLinePosition(q, pol[i], pol[(i+1)%n]);
@@ -80,7 +80,7 @@ int Algorithms::getPositionWinding(QPoint &q, std::vector<QPoint> &pol)
 
     //Point inside polygon
     double eps = 1.0e-5;
-    if (fabs(omega_sum - 2*M_PI) < eps)
+    if (fabs(fabs(omega_sum) - 2*M_PI) < eps)
         return 1;
 
     //Point outside polygon
