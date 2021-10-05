@@ -30,6 +30,8 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *label_2;
     QComboBox *comboBox;
+    QSpacerItem *verticalSpacer_3;
+    QPushButton *pushButton;
     QSpacerItem *verticalSpacer_2;
     QPushButton *pushButtonAnalyze;
     QLabel *label;
@@ -66,6 +68,15 @@ public:
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
         verticalLayout->addWidget(comboBox);
+
+        verticalSpacer_3 = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
+        pushButton = new QPushButton(Widget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
 
         verticalSpacer_2 = new QSpacerItem(20, 100, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -106,6 +117,7 @@ public:
         comboBox->setItemText(0, QCoreApplication::translate("Widget", "Ray crossing", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("Widget", "Winding number", nullptr));
 
+        pushButton->setText(QCoreApplication::translate("Widget", "Point/Vertex", nullptr));
         pushButtonAnalyze->setText(QCoreApplication::translate("Widget", "Analyze", nullptr));
         label->setText(QCoreApplication::translate("Widget", "TextLabel", nullptr));
         pushButtonClear->setText(QCoreApplication::translate("Widget", "Clear", nullptr));
