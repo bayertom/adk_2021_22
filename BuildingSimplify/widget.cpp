@@ -25,14 +25,15 @@ void Widget::on_pushButton_clicked()
     //Get points
     std::vector<QPoint> points = ui->Canvas->getPoints();
 
-    //Create convex hull
+    //Create enclosing rectangle
     Algorithms a;
     QPolygon ch = a.cHull(points);
+    QPolygon er = a.minAreaEnclosingRectangle(points);
 
-    //Update convex hull
+    //Update enclosing rectangle
     ui->Canvas->setCh(ch);
+    ui->Canvas->setEr(er);
 
     //Repaint
     repaint();
-
 }
