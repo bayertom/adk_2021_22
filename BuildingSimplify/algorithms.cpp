@@ -35,13 +35,11 @@ double Algorithms::get2LinesAngle(QPoint &p1, QPoint &p2, QPoint &p3, QPoint &p4
 
 QPolygon Algorithms::cHull (std::vector <QPoint> &points)
 {
+    //Create convex hull, Jarvis scan
     QPolygon ch;
 
-    //Sort points by y
-    std::sort(points.begin(),points.end(),sortByY());
-
     //Find pivot
-    QPoint q=points[0];
+    QPoint q=*std::min_element(points.begin(), points.end(), sortByY());
 
     //Add pivot to convex hull
     ch.append(q);
@@ -52,9 +50,9 @@ QPolygon Algorithms::cHull (std::vector <QPoint> &points)
 
     do
     {
+        //Find next convex hull point
         int i_max = -1;
         double om_max = 0;
-        //Find next point
         for (int i = 0; i<points.size(); i++)
         {
             double om = get2LinesAngle(pj, pjj, pj, points[i]);
@@ -67,12 +65,12 @@ QPolygon Algorithms::cHull (std::vector <QPoint> &points)
             }
         }
 
-        //dd point to convex hull
+        //Add point to the convex hull
         ch.append(points[i_max]);
 
-        //Update points to next ones
-        pjj=pj;
-        pj=points[i_max];
+        //Update last two points of the convex hull
+        pjj = pj;
+        pj = points[i_max];
 
     } while (pj != q);
 
@@ -103,26 +101,26 @@ std::vector <QPoint> Algorithms::rotate(std::vector <QPoint> &points, double sig
 
 std::tuple<std::vector<QPoint>, double> Algorithms::minMaxBox(std::vector <QPoint> &points)
 {
-    //Return vertices min max box and its area
+    //Return vertices of min-max box and its area
     double area = 0;
 
-    //Return min/max vertices
+    //Return vertices with extreme coordinates
     QPoint pxmin = *std::min_element(points.begin(), points.end(), sortByX());
     QPoint pxmax = *std::max_element(points.begin(), points.end(), sortByX());
     QPoint pymin = *std::min_element(points.begin(), points.end(), sortByY());
     QPoint pymax = *std::max_element(points.begin(), points.end(), sortByY());
 
-    //Create min max box vertices
+    //Create min-max box vertices
     QPoint v1(pxmin.x(),pymin.y());
     QPoint v2(pxmax.x(),pymin.y());
     QPoint v3(pxmax.x(),pymax.y());
     QPoint v4(pxmin.x(),pymax.y());
 
-    //Create min max box polygon
+    //Create min-max box polygon
     std::vector<QPoint> mmb{v1,v2,v3,v4};
 
-    //Calculate min max box area
-    area = (pxmax.x()-pxmin.x())*(pymax.y()-pymin.y());
+    //Calculate min-max box area
+    area = (pxmax.x() - pxmin.x())*(pymax.y() - pymin.y());
 
     return {mmb, area};
 }
@@ -152,7 +150,7 @@ QPolygon Algorithms::minAreaEnclosingRectangle(std::vector <QPoint> &points)
          //Rotate by -sigma
          std::vector<QPoint> r_points = rotate(points, -sigma);
 
-         //Create min max box
+         //Create min-max box
          auto [mmb, area] = minMaxBox(r_points);
 
          //Update minimum
