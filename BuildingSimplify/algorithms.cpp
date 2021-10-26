@@ -165,7 +165,7 @@ QPolygon Algorithms::minAreaEnclosingRectangle(std::vector <QPoint> &points)
     //Create enclosing rectangle
     std::vector<QPoint> er = rotate(mmb_min, sigma_min);
 
-    //Resize rectangle
+    //Resize rectangle, preserve area of the building
     std::vector<QPoint> err = resizeRectangle(points,er);
 
     //Create QPolygon
@@ -228,7 +228,7 @@ QPolygon Algorithms::wallAverage(std::vector <QPoint> &points)
     //Create enclosing rectangle
     std::vector<QPoint> er = rotate(mmb, sigma);
 
-    //Resize rectangle
+    //Resize rectangle, preserve area of the building
     std::vector<QPoint> err = resizeRectangle(points,er);
 
     //Create QPolygon
@@ -248,13 +248,13 @@ double Algorithms::LH(std::vector <QPoint> &points)
     int n = points.size();
     double area = 0;
 
-    //Proces all vertices
+    //Proces all vertices of the building
     for (int i = 0; i < n; i++)
     {
         area += points[i].x() * (points[(i+1)%n].y() - points[(i-1+n)%n].y());
     }
 
-    //Unsigned area
+    //Return unsigned area
     return 0.5 * fabs(area);
 }
 
@@ -292,11 +292,8 @@ std::vector <QPoint> Algorithms::resizeRectangle(std::vector <QPoint> &points, s
         QPoint v3_(xc + sqrt(k) * u3x, yc + sqrt(k) * u3y);
         QPoint v4_(xc + sqrt(k) * u4x, yc + sqrt(k) * u4y);
 
-        //Add to polygon
+        //Add vertices to vector
         std::vector<QPoint> er_res = {v1_, v2_, v3_, v4_};
 
         return er_res;
 }
-
-
-
