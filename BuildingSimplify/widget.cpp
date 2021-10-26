@@ -27,11 +27,22 @@ void Widget::on_pushButton_clicked()
 
     //Create enclosing rectangle
     Algorithms a;
-    QPolygon ch = a.cHull(points);
-    QPolygon er = a.minAreaEnclosingRectangle(points);
+    QPolygon er;
+    if (ui->comboBox->currentIndex()==0)
+    {
+        //Minimum area enclosing rectangle
+        QPolygon ch = a.cHull(points);
+        er = a.minAreaEnclosingRectangle(points);
+        ui->Canvas->setCh(ch);
+    }
+
+    else
+    {
+        //Wall average
+        er = a.wallAverage(points);
+    }
 
     //Update enclosing rectangle
-    ui->Canvas->setCh(ch);
     ui->Canvas->setEr(er);
 
     //Repaint
