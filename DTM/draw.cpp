@@ -20,6 +20,17 @@ void Draw::paintEvent(QPaintEvent *event)
         pol.append(points[i]);
     }
 
+    //Draw triangulation
+    for(Edge e : dt)
+    {
+        //Get start point, get end point
+        QPoint s_point = e.getStart();
+        QPoint e_point = e.getEnd();
+
+        //Draw line
+        qp.drawLine(s_point,e_point);
+    }
+
     qp.end();
 }
 
@@ -42,6 +53,12 @@ void Draw::mousePressEvent(QMouseEvent *event)
 void Draw::clear()
 {
     points.clear();
+    repaint();
+}
+
+void Draw::clearDT()
+{
+    dt.clear();
     repaint();
 }
 

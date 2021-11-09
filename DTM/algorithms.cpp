@@ -52,7 +52,7 @@ std::tuple<QPoint,double>Algorithms::getCircleCenterAndRadius(QPoint &p1,QPoint 
 
     //Center of inscribed circle
     double m = 0.5*(-k12*k4 + k11*k5 - (k10 + k4*k5)*k6)/(-p3.x()*k4 + p2.x()*k5 - p1.x()*k6);
-    double n = 0.5 * ((k1*(-k9)+k2*k8)+k3*(-k7)/(p1.x()*(-k9)+p2.y()*k8+p3.y()*(-k7)));
+    double n = 0.5 * ((k1*(-k9)+k2*k8)+k3*(-k7)/(p1.y()*(-k9)+p2.y()*k8+p3.y()*(-k7)));
     double r = sqrt((p1.x()-m)*(p1.x()-m)+(p1.y()-n)*(p1.y()-n));
 
     //Create center
@@ -131,4 +131,98 @@ std::vector<Edge> Algorithms::dT(std::vector<QPoint> &points)
     //Point nearest to pivot q
     int i_nearest = getNearestPoint(q, points);
     QPoint qn = points[i_nearest];
+
+    //Create new edge
+    Edge e(q, qn);
+
+    //Find optimal Delaunay point
+    int i_point = getDelaunayPoint(q, qn, points);
+
+    //Point has not been found, change orientation, search again
+    if (i_point == -1)
+    {
+        e.changeOrientation();
+        i_point = getDelaunayPoint(qn, q, points);
+    }
+
+    //Delaunay point + 3rd vertex
+    QPoint v3 = points[i_point];
+
+    //Create edges
+    QPoint es = e.getStart();
+    QPoint ee = e.getEnd();
+    Edge e2(ee, v3);
+    Edge e3(v3, es);
+
+    //Adding 3 edges to DT
+    dt.push_back(e);
+    dt.push_back(e2);
+    dt.push_back(e3);
+
+    //Adding 3 edges to AEL
+    ael.push_back(e);
+    ael.push_back(e2);
+    ael.push_back(e3);
+
+    //Proces edges until ael is empty
+    while(!ael.empty())
+    {
+        //get last edge
+        e = ael.back();
+        ael.pop_back();
+
+        //Change orientation
+        e.changeOrientation();
+
+        //Find optimal Delaunay point
+        QPoint qs = e.getStart();
+        QPoint qe = e.getEnd();
+        i_point = getDelaunayPoint(qs, qe, points);
+
+        //Point has been found
+        if (i_point != -1)
+        {
+            //Delaunay point + 3rd vertex
+            v3 = points[i_point];
+
+            //Create edges
+            es = e.getStart();
+            ee = e.getEnd();
+            Edge e2(ee, v3);
+            Edge e3(v3, es);
+
+            //Add 3 edges to DT
+            dt.push_back(e);
+            dt.push_back(e2);
+            dt.push_back(e3);
+
+            //Update AEL
+            updateAEL(e2, ael);
+            updateAEL(e3, ael);
+        }
+    }
+
+    return dt;
+}
+
+void Algorithms::updateAEL(Edge &e, std::list<Edge> &ael)
+{
+    //Update AEL
+
+    //Switch orientation
+    e.changeOrientation();
+
+    //Look for e3 in AEL
+    auto ie = std::find(ael.begin(),ael.end(),e);
+
+    //E2 has not been found, add to the list
+    if(ie == ael.end())
+    {
+        e.changeOrientation();
+        ael.push_back(e);
+    }
+
+    //Erase from ael
+    else
+        ael.erase(ie);
 }
