@@ -19,6 +19,7 @@ Widget::~Widget()
 
 void Widget::on_pushButton_2_clicked()
 {
+    //Clear all
     ui->Canvas->clear();
     repaint();
 }
@@ -41,6 +42,7 @@ void Widget::on_pushButton_clicked()
 
 void Widget::on_pushButton_cleardt_clicked()
 {
+    //Clear DT
     ui->Canvas->clearDT();
     repaint();
 }

@@ -28,6 +28,8 @@ public:
     QHBoxLayout *horizontalLayout;
     Draw *Canvas;
     QVBoxLayout *verticalLayout;
+    QPushButton *pushButtonLoad;
+    QSpacerItem *verticalSpacer_4;
     QLabel *label_2;
     QComboBox *comboBox;
     QSpacerItem *verticalSpacer_3;
@@ -57,6 +59,15 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        pushButtonLoad = new QPushButton(Widget);
+        pushButtonLoad->setObjectName(QString::fromUtf8("pushButtonLoad"));
+
+        verticalLayout->addWidget(pushButtonLoad);
+
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_4);
+
         label_2 = new QLabel(Widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
@@ -113,11 +124,12 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QCoreApplication::translate("Widget", "Point in Polygon", nullptr));
+        pushButtonLoad->setText(QCoreApplication::translate("Widget", "Load polygon", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "Select method", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("Widget", "Ray crossing", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("Widget", "Winding number", nullptr));
 
-        pushButton->setText(QCoreApplication::translate("Widget", "Point/Vertex", nullptr));
+        pushButton->setText(QCoreApplication::translate("Widget", "Enable / Disable point", nullptr));
         pushButtonAnalyze->setText(QCoreApplication::translate("Widget", "Analyze", nullptr));
         label->setText(QCoreApplication::translate("Widget", "TextLabel", nullptr));
         pushButtonClear->setText(QCoreApplication::translate("Widget", "Clear", nullptr));

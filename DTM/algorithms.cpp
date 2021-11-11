@@ -37,9 +37,9 @@ int Algorithms::getPointLinePosition(QPoint &a,QPoint &p1,QPoint &p2)
 std::tuple<QPoint,double>Algorithms::getCircleCenterAndRadius(QPoint &p1,QPoint &p2,QPoint &p3)
 {
     //Return center and radius of inscribed circle
-    double k1 = p1.x()*p1.x()+p1.y()*p1.y();
-    double k2 = p2.x()*p2.x()+p2.y()*p2.y();
-    double k3 = p3.x()*p3.x()+p3.y()*p3.y();
+    double k1 = p1.x() * p1.x() + p1.y() * p1.y();
+    double k2 = p2.x() * p2.x() + p2.y() * p2.y();
+    double k3 = p3.x() * p3.x() + p3.y() * p3.y();
     double k4 = p1.y() - p2.y();
     double k5 = p1.y() - p3.y();
     double k6 = p2.y() - p3.y();
@@ -51,9 +51,9 @@ std::tuple<QPoint,double>Algorithms::getCircleCenterAndRadius(QPoint &p1,QPoint 
     double k12 = p3.x() * p3.x();
 
     //Center of inscribed circle
-    double m = 0.5*(-k12*k4 + k11*k5 - (k10 + k4*k5)*k6)/(-p3.x()*k4 + p2.x()*k5 - p1.x()*k6);
-    double n = 0.5 * ((k1*(-k9)+k2*k8)+k3*(-k7)/(p1.y()*(-k9)+p2.y()*k8+p3.y()*(-k7)));
-    double r = sqrt((p1.x()-m)*(p1.x()-m)+(p1.y()-n)*(p1.y()-n));
+    double m = 0.5 *(-k12 * k4 + k11 * k5 - (k10 + k4 * k5) * k6)/(-p3.x() * k4 + p2.x() * k5 - p1.x() * k6);
+    double n = 0.5 * (-k1 * k9  + k2 * k8 - k3 * k7)/(-p1.y() * k9  + p2.y()  * k8 - p3.y()  * k7);
+    double r = sqrt((p1.x() - m) * (p1.x() - m) + (p1.y() - n) * (p1.y() - n));
 
     //Create center
     QPoint c(m,n);
@@ -91,6 +91,7 @@ int Algorithms::getDelaunayPoint(QPoint &s,QPoint &e,std::vector<QPoint> &points
             }
         }
     }
+
     return min_index;
 }
 
@@ -164,7 +165,7 @@ std::vector<Edge> Algorithms::dT(std::vector<QPoint> &points)
     ael.push_back(e2);
     ael.push_back(e3);
 
-    //Proces edges until ael is empty
+    //Proces edges until AEL is empty
     while(!ael.empty())
     {
         //get last edge

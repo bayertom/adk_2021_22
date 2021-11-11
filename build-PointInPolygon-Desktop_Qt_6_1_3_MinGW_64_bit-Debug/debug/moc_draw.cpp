@@ -7,7 +7,9 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../PointInPolygon/draw.h"
+#include "../../../adk_old/Ulohy/ADK2021/ADK_Kuzmanov_Muzik/PointInPolygonAlgorithms/draw.h"
+#include <QtGui/qtextcursor.h>
+#include <QScreen>
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
