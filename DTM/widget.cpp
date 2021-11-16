@@ -68,3 +68,8 @@ void Widget::on_lineEdit_3_editingFinished()
 {
     dz = ui->lineEdit->text().toDouble();
 }
+
+void Widget::on_pushButton_3_clicked()
+{
+}
+

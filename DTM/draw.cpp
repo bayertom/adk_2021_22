@@ -17,7 +17,7 @@ void Draw::paintEvent(QPaintEvent *event)
     for (int i=0; i<points.size(); i++)
     {
         qp.drawEllipse(points[i].x()-r,points[i].y()-r,2*r,2*r);
-        pol.append(points[i]);
+        pol.append(QPoint(points[i].x(), points[i].y()));
     }
 
     //Draw triangulation
