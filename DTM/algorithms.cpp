@@ -350,7 +350,7 @@ double Algorithms::getSlope(QPoint3D &p1, QPoint3D &p2, QPoint3D &p3)
 
 double Algorithms:: getExposition(QPoint3D &p1, QPoint3D &p2, QPoint3D &p3)
 {
-    //Compute exposition
+    //Compute exposition (direction of the projected normal vector)
     double ux = p1.x() - p2.x();
     double uy = p1.y() - p2.y();
     double uz = p1.getZ() - p2.getZ();
@@ -390,7 +390,7 @@ std::vector<Triangle> Algorithms::analyzeDTM(std::vector<Edge> &dt)
         //Create triangle
         Triangle t(p1, p2, p3, slope, exposition);
 
-        //Push triangle to the list
+        //Add triangle to the list
         triangles.push_back(t);
     }
 
