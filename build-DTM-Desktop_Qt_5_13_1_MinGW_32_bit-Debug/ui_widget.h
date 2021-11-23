@@ -37,6 +37,7 @@ public:
     QLabel *label_3;
     QLineEdit *lineEdit_3;
     QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_2;
     QPushButton *pushButton_cleardt;
@@ -105,6 +106,11 @@ public:
 
         verticalLayout->addWidget(pushButton_3);
 
+        pushButton_4 = new QPushButton(Widget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+
+        verticalLayout->addWidget(pushButton_4);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -139,7 +145,8 @@ public:
         label->setText(QCoreApplication::translate("Widget", "Z_min:", nullptr));
         label_2->setText(QCoreApplication::translate("Widget", "Z_max:", nullptr));
         label_3->setText(QCoreApplication::translate("Widget", "dZ:", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Widget", "PushButton", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("Widget", "Create contours", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("Widget", "Draw Slope", nullptr));
         pushButton_2->setText(QCoreApplication::translate("Widget", "Clear", nullptr));
         pushButton_cleardt->setText(QCoreApplication::translate("Widget", "Clear DT", nullptr));
     } // retranslateUi

@@ -71,5 +71,40 @@ void Widget::on_lineEdit_3_editingFinished()
 
 void Widget::on_pushButton_3_clicked()
 {
+    //Create contours
+    std::vector<Edge> dt = ui->Canvas->getDT();
+
+    //Is the triangulation not empty?
+    if (dt.size() > 0)
+    {
+        Algorithms a;
+        //Create contours
+        std::vector<Edge> contours = a.getContourLines(dt, zmin, zmax, dz);
+
+        //Set contours
+        ui->Canvas->setContours(contours);
+
+        repaint();
+    }
+
 }
 
+
+void Widget::on_pushButton_4_clicked()
+{
+    //Draw slope
+    std::vector<Edge> dt = ui->Canvas->getDT();
+
+    //Is the triangulation not empty?
+    if (dt.size() > 0)
+    {
+        Algorithms a;
+        //Analyze DTM
+        std::vector<Triangle> triangles = a.analyzeDTM(dt);
+
+        //Set triangles
+        ui->Canvas->setTriangles(triangles);
+
+        repaint();
+    }
+}
