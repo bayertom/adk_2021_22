@@ -1,8 +1,8 @@
 #ifndef QPOINTFBO_H
 #define QPOINTFBO_H
 
-#include "types.h"
 #include <QtGui>
+#include "types.h"
 
 class QPointFBO : public QPointF
 {

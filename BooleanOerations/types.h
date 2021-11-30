@@ -1,9 +1,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 #include <QtGui>
-//#include "edge.h"
 
-#include "qpointfbo.h"
+//Foward declaration
 class QPointFBO;
 
 //Position of point and line
