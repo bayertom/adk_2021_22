@@ -471,8 +471,8 @@ release/moc_draw.cpp: ../BooleanOerations/draw.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
-		../BooleanOerations/qpointfbo.h \
 		../BooleanOerations/edge.h \
+		../BooleanOerations/qpointfbo.h \
 		release/moc_predefs.h \
 		C:/Qt/6.2.1/mingw81_64/bin/moc.exe
 	C:\Qt\6.2.1\mingw81_64\bin\moc.exe $(DEFINES) --include E:/Tomas/CPP/adk/build-BooleanOerations-Desktop_Qt_6_2_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.2.1/mingw81_64/mkspecs/win32-g++ -IE:/Tomas/CPP/adk/BooleanOerations -IC:/Qt/6.2.1/mingw81_64/include -IC:/Qt/6.2.1/mingw81_64/include/QtWidgets -IC:/Qt/6.2.1/mingw81_64/include/QtGui -IC:/Qt/6.2.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\BooleanOerations\draw.h -o release\moc_draw.cpp
@@ -963,8 +963,8 @@ ui_widget.h: ../BooleanOerations/widget.ui \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
-		../BooleanOerations/qpointfbo.h \
-		../BooleanOerations/edge.h
+		../BooleanOerations/edge.h \
+		../BooleanOerations/qpointfbo.h
 	C:\Qt\6.2.1\mingw81_64\bin\uic.exe ..\BooleanOerations\widget.ui -o ui_widget.h
 
 compiler_yacc_decl_make_all:
@@ -981,7 +981,6 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 release/algorithms.o: ../BooleanOerations/algorithms.cpp ../BooleanOerations/algorithms.h \
 		../BooleanOerations/qpointfbo.h \
-		../BooleanOerations/types.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGui \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGuiDepends \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QtCore \
@@ -1318,7 +1317,8 @@ release/algorithms.o: ../BooleanOerations/algorithms.cpp ../BooleanOerations/alg
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundogroup.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h
+		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
+		../BooleanOerations/types.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\algorithms.o ..\BooleanOerations\algorithms.cpp
 
 release/draw.o: ../BooleanOerations/draw.cpp ../BooleanOerations/draw.h \
@@ -1665,13 +1665,12 @@ release/draw.o: ../BooleanOerations/draw.cpp ../BooleanOerations/draw.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
-		../BooleanOerations/qpointfbo.h \
-		../BooleanOerations/edge.h
+		../BooleanOerations/edge.h \
+		../BooleanOerations/qpointfbo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\draw.o ..\BooleanOerations\draw.cpp
 
 release/edge.o: ../BooleanOerations/edge.cpp ../BooleanOerations/edge.h \
 		../BooleanOerations/qpointfbo.h \
-		../BooleanOerations/types.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGui \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGuiDepends \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QtCore \
@@ -2008,7 +2007,8 @@ release/edge.o: ../BooleanOerations/edge.cpp ../BooleanOerations/edge.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundogroup.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h
+		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
+		../BooleanOerations/types.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\edge.o ..\BooleanOerations\edge.cpp
 
 release/main.o: ../BooleanOerations/main.cpp ../BooleanOerations/widget.h \
@@ -2164,7 +2164,6 @@ release/main.o: ../BooleanOerations/main.cpp ../BooleanOerations/widget.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\BooleanOerations\main.cpp
 
 release/qpointfbo.o: ../BooleanOerations/qpointfbo.cpp ../BooleanOerations/qpointfbo.h \
-		../BooleanOerations/types.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGui \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/QtGuiDepends \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QtCore \
@@ -2501,7 +2500,8 @@ release/qpointfbo.o: ../BooleanOerations/qpointfbo.cpp ../BooleanOerations/qpoin
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundogroup.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qundostack.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qvalidator.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h
+		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtguiversion.h \
+		../BooleanOerations/types.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qpointfbo.o ..\BooleanOerations\qpointfbo.cpp
 
 release/widget.o: ../BooleanOerations/widget.cpp ../BooleanOerations/widget.h \

@@ -27,7 +27,7 @@ typedef enum {
     DifferenceB_A
 } TBooleanOperation;
 
-//Position of line & line
+//Position of line and line
 typedef enum{
     Colinear,
     Parallel,
