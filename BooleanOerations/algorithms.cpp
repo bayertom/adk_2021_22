@@ -184,8 +184,9 @@ void Algorithms::updatePolygons(TPolygon &A, TPolygon &B)
                 processIntersection(b, alpha, i, A);
             }
         }
-     }
+    }
 }
+
 
 void Algorithms::processIntersection(QPointFBO &b, double t, int &index, TPolygon &P)
 {
