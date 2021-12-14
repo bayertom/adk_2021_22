@@ -10,6 +10,7 @@ Widget::Widget(QWidget *parent)
 
 }
 
+
 Widget::~Widget()
 {
     delete ui;
@@ -20,6 +21,7 @@ void Widget::on_pushButton_clicked()
 {
     ui->Canvas->switchSource();
 }
+
 
 void Widget::on_pushButton_2_clicked()
 {
@@ -38,14 +40,18 @@ void Widget::on_pushButton_2_clicked()
     repaint();
 }
 
+
 void Widget::on_pushButton_3_clicked()
 {
+    //Clear results
     ui->Canvas->clear();
     repaint();
 }
 
+
 void Widget::on_pushButton_4_clicked()
 {
+    //Clear all
     ui->Canvas->clearAll();
     repaint();
 }

@@ -54,6 +54,7 @@ void Draw::drawPolygon(TPolygon &polygon, QPainter &qp)
        pol.append(QPoint(polygon[i].x(),polygon[i].y()));
     }
 
+    //Draw polygon
     qp.drawPolygon(pol);
 }
 
